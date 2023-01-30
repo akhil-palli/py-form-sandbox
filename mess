@@ -1,0 +1,52 @@
+from tkinter import *
+
+def save_info():
+    firstname_info = firstname.get()
+    lastname_info = lastname.get()
+    email_info = email.get()
+    email_info = email_info
+    print(firstname_info, lastname_info, email_info)
+
+    file = open(f"{firstname_info}{lastname_info}Login.txt", "x")
+    file.write(firstname_info)
+    file.write(lastname_info)
+    file.write(email_info)
+    file.close()
+    print("User ", firstname_info, " has been registered successfully")
+
+    firstname_entry.delete(0, END)
+    lastname_entry.delete(0, END)
+    email_entry.delete(0, END)
+
+screen = Tk()
+screen.geometry("500x500")
+screen.title("Register")
+
+heading = Label(text = "Python Form" , bg = "grey", fg = "black", height = "3", width = "500")
+heading.pack()
+
+firstname_text = Label(text = "First Name *")
+lastname_text = Label(text = "Last Name *")
+email_text = Label(text = "Email *")
+firstname_text.place(x= 10, y = 70)
+lastname_text.place(x = 10, y = 140)
+email_text.place(x = 10, y = 210)
+
+firstname = StringVar()
+lastname = StringVar()
+email = StringVar()
+
+firstname_entry = Entry(textvariable = firstname, width = "30")
+lastname_entry = Entry(textvariable = lastname, width = "30")
+email_entry = Entry(textvariable = email, width = "30")
+
+firstname_entry.place(x = 10, y = 105)
+lastname_entry.place(x = 10, y = 175)
+email_entry.place(x = 10, y = 245)
+
+register = Button(text = "Register", width = "29", height = "1", command = save_info)
+register.place(x = 5, y = 290)
+
+
+
+screen.mainloop()
